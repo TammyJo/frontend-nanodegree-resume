@@ -1,22 +1,22 @@
 // BIO OBJECT
 var bio = {
-    "name": "TammyJo",
-    "role": "Salesforce Developer (Apex/Visualforce)",
-    "welcomeMsg": "My welcome message goes here!",
-    "photo": "http://l.thumbs.canstockphoto.com/canstock2727251.jpg",
-    "contact": {
-        "email": "twehmeir@gmail.com",
-        "phone": "703.867.0790",
-        "location" : "Alexandria, VA"
-    },
-    "skills": [
-        "HTML 5",
-        "CSS 3",
-        "Bootstrap",
-        "Git & Github",
-        "JavaScript",
-        "jQuery"
-    ]
+  "name": "TammyJo Wehmeir",
+  "role": "Salesforce Developer (Apex/Visualforce)",
+  "welcomeMsg": "My welcome message goes here!",
+  "photo": "http://l.thumbs.canstockphoto.com/canstock2727251.jpg",
+  "contact": {
+    "email": "twehmeir@gmail.com",
+    "phone": "703.867.0790",
+    "location" : "Alexandria, VA"
+  },
+  "skills": [
+    "HTML 5",
+    "CSS 3",
+    "Bootstrap",
+    "Git & Github",
+    "JavaScript",
+    "jQuery"
+  ]
 };
 
 // WORK OBJECT
@@ -34,7 +34,14 @@ var work = {
       "title" : "Java & Salesforce Developer",
       "location" : "Washington, DC (U.S. Department of State)",
       "dates" : "Jun 2014 - Feb 2015",
-      "description" : "Description of my current job goes here."
+      "description" : "Description of my job goes here."
+    },
+    {
+      "employer" : "International Center for Language Studies, Inc.",
+      "title" : "Program Mangaer, Instructional Technolgies",
+      "location" : "Washington, DC",
+      "dates" : "Sept 2011 - May 2014",
+      "description" : "Description of my job goes here."
     }
   ]
 };
@@ -80,3 +87,59 @@ var projects = {
     }
   ]
 };
+
+// Add stuff to the page
+var name = "TammyJo Wehmeir";
+var formattedName = HTMLheaderName.replace("%data%", name);
+$("#header").append(formattedName);
+// Check if there are any skills in the bio object
+if (bio.skills.length > 0) {
+  $("#header").append(HTMLskillsStart);
+  var formattedSkill;
+  var numSkill = 0;
+  while (numSkill < bio.skills.length){
+    formattedSkill = HTMLskills.replace("%data%", skills[numSkill]);
+    $("#skills").append(formattedSkill);
+    numSkill++;
+  }
+}
+
+// Display Work function
+function displayWork(){
+  if(work.jobs.length > 0){
+    for(index in work.jobs){
+      $("#workExperience").append(HTMLworkStart);
+      // employer info
+      var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[index].employer);
+      // title info
+      var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[index].title);
+      $(".work-entry:last").append(formattedEmployer + formattedTitle);
+      // location info
+      var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[index].location);
+      $(".work-entry:last").append(formattedLocation);
+      // dates worked
+      var formattedDates = HTMLworkDates.replace("%data%", work.jobs[index].dates);
+      $(".work-entry:last").append(formattedDates);
+      // description
+      var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[index].description);
+      // concat employer + job title
+      $(".work-entry:last").append(formattedDescription);
+    }
+  }
+}
+
+// Display work on the page
+displayWork();
+
+// Function to display name with international format
+function inName(name){
+  console.log(name);
+  name = name.trim().split(" ");
+  name[1] = name[1].toUpperCase();
+  name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
+  console.log(name[0] + " " + name[1]);
+  return name[0] + " " + name[1];
+}
+
+// Add Internationalize button to the page
+//$("#main").append(internationalizeButton);
