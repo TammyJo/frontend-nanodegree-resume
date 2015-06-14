@@ -8,6 +8,10 @@
   overflow: auto;
 }
 
+.flex-item {
+  font-size:1.1em;
+}
+
 .education-entry, .work-entry, .project-entry {
   padding-left: 5%;
   padding-right: 5%;
@@ -15,7 +19,7 @@
 
 h1 {
   font-size: 40px;
-  color: #F5A623;
+  color: #2D3E50;
   line-height: 48px;
   display: inline;
 }
@@ -23,7 +27,7 @@ h1 {
 h2 {
   font-weight: bold;
   font-size: 24px;
-  color: #999999;
+  color: #2D3E50;
   line-height: 29px;
   padding: 10px;
 }
@@ -51,10 +55,12 @@ h2, h3, h4, h5 {
 
 .date-text {
   font-style: italic;
-  font-size: 14px;
-  color: #999999;
+  font-size: 13px;
+  color: #2D3E50;
   line-height: 16px;
   float: left;
+  opacity:.6;
+  padding-right:4px;
 }
 
 .location-text {
@@ -68,44 +74,56 @@ h2, h3, h4, h5 {
 
 p {
   font-size: 14px;
-  color: #333333;
+  color: #2D3E50;
   line-height: 21px;
 }
 
 a {
-  color: #1199C3;
+  color:#E65B71;
   text-decoration: none;
+  font-weight:bold;
   margin-top: 10px;
   display: block;
+}
+
+em {
+  font-style:normal;
+  opacity:.75;
 }
 
 .welcome-message {
   font-style: italic;
   font-size: 18px;
   color: #F3F3F3;
-  line-height: 28px;
+  line-height: 48px;
 }
 
 #skillsH3 {
-  color: #F5AE23;
-  display: none;
+  color: #1BBC9B;
+  font-style:normal;
+  padding-left:10px;
+  margin-top:20px;
 }
 
-.orange {
-  background-color: #F5AE23;
+.aqua {
+  background-color: #1BBC9B;
 }
 
-.orange-text {
-  color: #F5AE23;
+.aqua-text {
+  color: #1BBC9B;
 }
 
 .white-text {
   font-weight: bold;
-  color: #FFFFFF;
+  color: #FAFAFA;
+}
+
+.center-text {
+  color: #2D3E50;
 }
 
 .gray {
-  background-color: #F3F3F3;
+  background-color: #CFCFCF;
   padding-bottom: 10px;
   clear:both;
 }
@@ -114,9 +132,17 @@ a {
   background-color: #4A4A4A;
 }
 
-/* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  background-color: #2D3E50;
+}
+
+.name {
+  color:#E65B71;
+}
+
+.role {
+  color:white;
+  margin-left:15px;
 }
 
 .flex-box {
@@ -129,7 +155,6 @@ a {
 }
 
 .center-content {
-  padding-top: 2.5%;
   padding-left: 5%;
   padding-right: 5%;
   padding-bottom: 2.5%
@@ -142,7 +167,8 @@ ul {
 .biopic {
   float: left;
   padding: 10px;
-  width: 200px;
+  height:160px;
+  width:125px;
   display: none;
 }
 
@@ -152,7 +178,6 @@ img {
 
 /* Bar chart stuff */
 .chart div {
-  font: 10px sans-serif;
   background-color: #4A4A4A;
   text-align: right;
   padding: 3px;
@@ -164,6 +189,10 @@ img {
 
 span {
   padding: 5px;
+}
+
+.skill {
+  padding-right: 18px;
 }
 
 #letsConnect {
