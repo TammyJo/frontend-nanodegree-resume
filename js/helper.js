@@ -4,7 +4,7 @@ HTML strings that will build the resume, JavaScript functions will replace the %
 var HTMLheaderName = '<h1 class="name">%data%</h1>';
 var HTMLheaderRole = '<span class="role">%data%</span><hr/>';
 
-var HTMLlinkedIn = '<li class="flex-item"><span class="aqua-text">linkedIn</span><span class="white-text">%data%</span></li>';
+var HTMLlinkedInButton = '<a href="https://www.linkedin.com/pub/tamara-wehmeir/38/359/7b0"><img src="https://static.licdn.com/scds/common/u/img/webpromo/btn_myprofile_160x33.png" width="156" height="30" border="0"alt="View Tamara Wehmeir\'s profile on LinkedIn"/></a>';
 var HTMLmobile = '<li class="flex-item"><span class="aqua-text">mobile</span><span class="white-text">%data%</span></li>';
 var HTMLemail = '<li class="flex-item"><span class="aqua-text">email</span><span class="white-text">%data%</span></li>';
 var HTMLtwitter = '<li class="flex-item"><span class="aqua-text">twitter</span><span class="white-text">%data%</span></li>';
@@ -151,6 +151,7 @@ function initializeMap() {
     });
 
     google.maps.event.addListener(marker, 'click', function() {
+      infoWindow.open(map,marker);
     });
 
     // this is where the pin gets added to the map.
@@ -177,19 +178,15 @@ function initializeMap() {
   and fires off Google place searches for each location
   */
   function pinPoster(locations) {
-
     // creates a Google place search service object. PlacesService does the work of
     // actually searching for location data.
     var service = new google.maps.places.PlacesService(map);
-
     // Iterates through the array of locations, creates a search object for each location
     for (var place in locations) {
-
       // the search request object
       var request = {
         query: locations[place]
       };
-
       // Actually searches the Google Maps API for location data and runs the callback
       // function with the search results after each search.
       service.textSearch(request, callback);

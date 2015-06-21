@@ -6,7 +6,6 @@ var bio = {
   "photo": "http://l.thumbs.canstockphoto.com/canstock2727251.jpg",
   "contacts": {
     "email": "twehmeir@gmail.com",
-    "linkedIn": "Tamara Wehmeir",
     "mobile": "703.867.0790",
     "location" : "Alexandria, VA",
     "github" : "TammyJo"
@@ -22,7 +21,7 @@ var bio = {
     "Git & Github",
     "JavaScript"
   ]
-}
+};
 
 // WORK OBJECT
 var work = {
@@ -93,7 +92,7 @@ var education = {
       "url" : "https://www.udacity.com"
     }
   ]
-}
+};
 
 // PROJECT OBJECT
 var project = {
@@ -117,11 +116,10 @@ var project = {
       "images" : ["images/197x148.gif","images/197x148.gif"]
     }
   ]
-}
+};
 
 // Display bio function
 bio.myInfo = function(){
-
   // my pic
   var myPic = HTMLbioPic.replace("%data%", this.photo);
   $("#header").prepend(myPic);
@@ -151,29 +149,24 @@ bio.myInfo = function(){
   // email
   var formattedEmail = HTMLemail.replace("%data%", this.contacts.email);
   $("#topContacts:last").append(formattedEmail);
-  // LinkedIn
-  var formattedLinkedIn = HTMLlinkedIn.replace("%data%", this.contacts.linkedIn);
-  $("#topContacts:last").append(formattedLinkedIn);
   // location
   var formattedLoc = HTMLlocation.replace("%data%", this.contacts.location);
   $("#topContacts:last").append(formattedLoc);
   // Github
   var formattedGithub = HTMLgithub.replace("%data%", this.contacts.github);
   $("#topContacts:last").append(formattedGithub);
-
+  // LinkedIn
+  var formattedLinkedIn = HTMLlinkedInButton;
+  $("#header").append(formattedLinkedIn);
   // Add certain contact info to footer
   $("#footerContacts").prepend(formattedLoc);
   $("#footerContacts").prepend(formattedEmail);
   $("#footerContacts").prepend(formattedMobile);
+};
 
 
-}
-
-// Display bio info
-bio.myInfo();
-
-// Display Work function
-function displayWork(){
+// Display Experience function
+work.displayExperience = function(){
   if(work.jobs.length > 0){
     for(index in work.jobs){
       $("#workExperience").append(HTMLworkStart);
@@ -196,13 +189,10 @@ function displayWork(){
   }
 };
 
-// Display work on the page
-displayWork();
-
 // Display project function
 project.display = function(){
   if(project.projects.length > 0){
-    for(index in project.projects){
+    for(var index in project.projects){
       $("#projects").append(HTMLprojectStart);
       // title
       var formattedTitle = HTMLprojectTitle.replace("%data%", project.projects[index].title);
@@ -222,9 +212,6 @@ project.display = function(){
     }
   }
 };
-
-// Display projects on the page
-project.display();
 
 // Display education function
 education.display = function(){
@@ -270,7 +257,14 @@ education.display = function(){
   }
 };
 
-// Display education on the page
+/* Call functions to display contents on page */
+// Bio info
+bio.myInfo();
+// Work info
+work.displayExperience();
+// Project info
+project.display();
+// Education info
 education.display();
 
 // Function to display name with international format
@@ -280,7 +274,7 @@ function inName(name){
   name[1] = name[1].toUpperCase();
   console.log(name[0] + " " + name[1]);
   return name[0] + " " + name[1];
-}
+};
 
 // Add Internationalize button to the page
 $("#main").append(internationalizeButton);
